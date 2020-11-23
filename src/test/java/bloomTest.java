@@ -11,6 +11,7 @@ public class bloomTest {
     Filter<Integer> filter1 = new Filter<>(3,1);
     Filter<Integer> filter2 = new Filter<>(100,2);
     Filter<Integer> sameFilter2 = new Filter<>(100,2);
+    Bitset bitset = new Bitset(100);
 
     private List<Integer> getArr(){
         List<Integer> arr = new ArrayList<>();
@@ -92,5 +93,13 @@ public class bloomTest {
     void toArrayObj(){
         Assertions.assertThrows(UnsupportedOperationException.class, () ->
                 filter2.toArray(new Object[2]));
+    }
+
+    //bitset tests
+    @Test
+    void setBit(){
+        bitset.setBit(11);
+        assertTrue(bitset.getSetBit(11));
+        assertFalse(bitset.getSetBit(1));
     }
 }
